@@ -28,7 +28,7 @@ with torch.no_grad():
                     winner = None
                     break
 
-                i, j = y // 3, y % 3
+                i, j = divmod(y, 3)
             else:
                 i, j = random.choice(get_valid_moves(board))
 

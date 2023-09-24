@@ -14,7 +14,7 @@ wandb_project = "ttt"
 
 batch_size = 2048
 
-learning_rate = 6e-3
+learning_rate = 6e-4
 max_iters = 600000
 weight_decay = 1e-1
 beta1 = 0.9

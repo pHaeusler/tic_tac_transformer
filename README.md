@@ -1,4 +1,4 @@
-# Tic Tac Transformer
+# ![icon](/assets/feature.jpg)&nbsp; Tic Tac Transformer
 
 A tiny GPT trained to play tic-tac-toe
 
@@ -39,6 +39,14 @@ player 1 wins
 
 ## Try for yourself
 
+Play the AI!
+
+```bash
+python play_ai.py
+```
+
+## Training
+
 Generate pre-training data
 
 ```bash
@@ -61,10 +69,4 @@ Run benchmark
 
 ```bash
 python benchmark.py
-```
-
-Play the AI!
-
-```bash
-python play_ai.py
 ```

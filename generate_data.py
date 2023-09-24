@@ -74,8 +74,8 @@ def save_data(trajectories):
 
 if __name__ == "__main__":
     board = np.zeros((3, 3), dtype=int)
-    trajectories = all_trajectories(board, [], 1)
+    # trajectories = all_trajectories(board, [], 1)
     # trajectories = all_optimal_trajectories(board, [], 1, {-1, 1})
-    # trajectories = all_optimal_trajectories(board, [], 1)
+    trajectories = all_optimal_trajectories(board, [], 1)
     print(len(trajectories))
     save_data(trajectories)

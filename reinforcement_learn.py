@@ -12,7 +12,7 @@ from board_ops import (
 )
 from setup import load_from_checkpoint, device, save_checkpoint
 
-NUM_EPOCHS = 4000
+NUM_EPOCHS = 20000
 BATCH_SIZE = 1024
 LR = 1e-5
 WANDB = True

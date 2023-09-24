@@ -20,8 +20,8 @@ def init_model():
         block_size=SEQ_LENGTH,
         vocab_size=VOCAB_SIZE,
         n_layer=1,
-        n_head=4,
-        n_embd=12,
+        n_head=1,
+        n_embd=14,
         dropout=0.0,
         bias=False,
     )
