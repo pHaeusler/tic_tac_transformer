@@ -1,5 +1,5 @@
 import torch
-from tokens import START
+from tokens import START, PLAYER_1, PLAYER_2, DRAW
 from board_ops import check_winner, board_full, get_valid_moves
 import numpy as np
 from setup import load_from_checkpoint, device
@@ -10,7 +10,10 @@ import random
 def main(incl_winner: bool = False, target_score: int = 1):
     """
     incl_winner: Whether to include the winner in the input sequence just after the START token
-    target_score: Used only when incl_winner is True. 0 for player 2, 1 for player 1, 2 for draw
+    target_score: Used only when incl_winner is True. 
+    11 for player 1, 
+    12 for player 2, 
+    13 for draw
     """
 
     model = load_from_checkpoint()
@@ -26,7 +29,8 @@ def main(incl_winner: bool = False, target_score: int = 1):
 
             moves = []
             if incl_winner:
-                assert target_score in [0, 1, 2]
+                assert target_score in [PLAYER_1, PLAYER_2, DRAW]
+                
 
             while winner is None and not board_full(board):
                 if player == 1:

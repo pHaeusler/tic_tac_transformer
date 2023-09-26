@@ -16,7 +16,7 @@ wandb_project = "ttt"
 batch_size = 2048
 
 learning_rate = 6e-4
-max_iters = 600000
+max_iters = 1600000
 weight_decay = 1e-1
 beta1 = 0.9
 beta2 = 0.95
@@ -61,7 +61,7 @@ def main(incl_winner: bool = False):
 
     X, Y = get_batch()
     t0 = time.time()
-    print("AAAAAAAAAAAAAAAA")
+    print("Starting training loop")
     while iter_num < max_iters:
         if iter_num > 0 and iter_num % save_interval == 0:
             save_checkpoint(model)

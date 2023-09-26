@@ -18,7 +18,7 @@ def init_model(incl_winner: bool = False):
     print("Initializing a new model from scratch")
     config = GPTConfig(
         block_size=SEQ_LENGTH + 1 if incl_winner else SEQ_LENGTH,
-        vocab_size=VOCAB_SIZE,
+        vocab_size=VOCAB_SIZE["extended"] if incl_winner else VOCAB_SIZE["standard"],
         n_layer=1,
         n_head=1,
         n_embd=14,

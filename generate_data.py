@@ -1,8 +1,9 @@
 import numpy as np
 import copy
 from collections import defaultdict
+import typer
 
-from tokens import PAD, SEQ_LENGTH, START
+from tokens import PAD, SEQ_LENGTH, START, PLAYER_1, PLAYER_2, DRAW
 from board_ops import check_winner, board_full, optimal_moves, get_valid_moves
 
 
@@ -53,7 +54,7 @@ def seq_to_board(seq):
     return board
 
 
-w_map = {-1: 0, 1: 1, None: 2}
+w_map = {-1: PLAYER_2, 1: PLAYER_1, None: DRAW}
 
 def save_data(trajectories, incl_winner=False):
     outcomes = defaultdict(int)
@@ -75,7 +76,7 @@ def save_data(trajectories, incl_winner=False):
         data=np.full((len(trajectories), SEQ_LENGTH+1), PAD, dtype=np.int16)
         for i, (b, s, w) in enumerate(trajectories):
             # start with the START token, then winner, then sequence
-            row = [START, w_map(w)] + s
+            row = [START, w_map[w]] + s
             if i < 10:
                 print(row)
             data[i, : len(row)] = row
@@ -85,10 +86,6 @@ def save_data(trajectories, incl_winner=False):
     np.save("data/train.npy", data)
 
 
-# Use typer instead
-import typer
-app = typer.Typer()
-
 def main(optimal: bool = False, incl_winner: bool = False):
     board = np.zeros((3, 3), dtype=int)
     if optimal:
@@ -97,7 +94,7 @@ def main(optimal: bool = False, incl_winner: bool = False):
         trajectories = all_trajectories(board, [], 1)
     # trajectories = all_optimal_trajectories(board, [], 1, {-1, 1})
     # trajectories = all_optimal_trajectories(board, [], 1)
-    print(len(trajectories))
+    print(f"{len(trajectories)} trajectories")
     save_data(trajectories, incl_winner)
 
 if __name__ == "__main__":
